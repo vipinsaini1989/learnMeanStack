@@ -9,13 +9,16 @@ import { AppComponent } from './app.component';
 import { PostCreateComponent } from './post/post-create/post-create.component';
 import { HeaderComponent } from './header/header/header.component';
 import { PostListComponent } from './post-list/post-list/post-list.component';
+import { TestNgComponent } from './example/test-ng/test-ng.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    TestNgComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +30,7 @@ import { PostListComponent } from './post-list/post-list/post-list.component';
     MatExpansionModule,
     MatCardModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
   providers: [],
