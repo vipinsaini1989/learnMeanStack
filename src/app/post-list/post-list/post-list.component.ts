@@ -10,6 +10,7 @@ import { PostService } from "../../service/post.service";
 })
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
+  isLoading = false;
   private postSub: Subscription
 
   /* posts = [
@@ -23,10 +24,12 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.postService.getPosts();
     this.postSub = this.postService.getPostUpdateListner()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
+        this.isLoading = false;
       })
   }
 
