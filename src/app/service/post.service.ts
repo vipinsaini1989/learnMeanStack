@@ -3,6 +3,7 @@ import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Post } from "../post.model";
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,22 @@ export class PostService {
         let id = respData.postId
         post.id = id;
         this.posts.push(post);
+        this.postUpdated.next([...this.posts]);
+      })
+  }
+
+  getPost(id: string) {
+    return this.http.get<{ _id: string, title: string, content: string }>('http://localhost:3000/api/posts/' + id);
+  }
+
+  updatePost(id: string, title: string, content: string) {
+    let post = { id: id, title: title, content: content };
+    this.http.put('http://localhost:3000/api/posts/' + id, post)
+      .subscribe((updatedResp) => {
+        let updatedPost = [...this.posts];
+        let oldPost = this.posts.findIndex(p => p.id === id);
+        updatedPost[oldPost] = post;
+        this.posts = updatedPost;
         this.postUpdated.next([...this.posts]);
       })
   }
