@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header/header.component';
 import { PostListComponent } from './post-list/post-list/post-list.component';
 import { TestNgComponent } from './example/test-ng/test-ng.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TemplateDrivenComponent } from './example/template-driven/template-driven.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     PostCreateComponent,
     HeaderComponent,
     PostListComponent,
-    TestNgComponent
+    TestNgComponent,
+    TemplateDrivenComponent
   ],
   imports: [
     BrowserAnimationsModule,

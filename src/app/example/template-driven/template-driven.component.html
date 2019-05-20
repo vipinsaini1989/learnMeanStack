@@ -1,0 +1,50 @@
+<mat-card>
+
+  <form #frm="ngForm" (ngSubmit)="addUser(frm)">
+    <div>
+      <mat-form-field>
+        <label for="name">Name: </label>
+        <input matInput type="text" name="name" ngModel #name="ngModel" required pattern="[a-zA-Z][a-zA-Z]*">
+      </mat-form-field>
+      <div *ngIf="name.touched">
+        <mat-error *ngIf="name.error?.pattern">
+          Please enter a valid name
+        </mat-error>
+      </div>
+
+    </div>
+
+    <div>
+      <mat-form-field>
+        <label for="contact">Contact: </label>
+        <input matInput type="tel" name="contact" ngModel #contact="ngModel" required pattern="[0-9]*">
+      </mat-form-field>
+      <div *ngIf="contact.touched">
+        <mat-error *ngIf="contact.invalid">
+          Please enter a valid contact
+        </mat-error>
+      </div>
+
+    </div>
+
+    <div>
+      <mat-form-field>
+        <label for="email">Email: </label>
+        <input matInput type="email" name="email" ngModel #email="ngModel" required>
+      </mat-form-field>
+      <div *ngIf="email.touched">
+        <mat-error *ngIf="email.invalid">
+          Please enter a valid email
+        </mat-error>
+      </div>
+
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="frm.invalid">submit</button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card>
+  {{frm.value | json}}
+</mat-card>
